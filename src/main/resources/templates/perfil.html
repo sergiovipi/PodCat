@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ca">
+<div th:replace="~{fragments :: head}"></div>
+
+<body>
+    <div th:insert="~{fragments :: nav}"></div>
+
+    <!-- Contingut Main -->
+    <div class="contingut contingut_perfil">
+        <main>
+           <section>
+                <article>
+                    <!-- Llista de CANALS
+                    <div th:if="${#lists.isEmpty(llistaCanals)}">
+                        <p>No hi ha cap canal</p>
+                    </div>
+                    -->
+                    <div th:unless="${#lists.isEmpty(llistaCanals)}">
+                        <div class="text-left" th:each="c: ${llistaCanals}">
+                            <h3 th:text="${c.titol}"></h3>
+                            <p th:text="${c.descripcio}"></p>
+                            <!--
+                            <div th:if="${#lists.isEmpty(llistaPodcasts)}">
+                                <p>Encara no hi ha cap podcast</p>
+                                    <form action="eliminaCanal" method="post"
+                                        onsubmit="return confirm('Estàs segur que vols eliminar aquest canal?');">
+                                        <input type="hidden" name="eliminaIDcanal" th:attr="value=${c.id}" />
+                                        <input type="hidden" name="eliminaNomCanal" th:attr="value=${c.titol}" />
+                                        <button type="submit" class="btn-entrar efecteButton">
+                                            <i class="fas fa-times"></i> Elimina el canal
+                                        </button>
+                                    </form>
+                            </div>
+                            -->
+
+                            <!-- Llista de PODCASTS -->
+                            <div class='caixa00podcasts' th:if="${llistaPodcasts}">
+                                <a class='caixa00 caixa00p'
+                                    th:if="${c.id == p.canal.id}"
+                                    th:each="p: ${llistaPodcasts}"
+                                    th:attr="style='background-image: linear-gradient(#11111100, #111111), url(\'images/'+${p.imatge}+'\');',
+                                        href='podcast/'+${p.id}+''">
+                                    <div>
+                                        <div class='caixa00text' th:text="*{#temporals.format(p.dataPublicacio, 'dd/MM/yyyy')}"></div>
+                                        <div class='caixa00titol' th:text="${p.titol}"></div>
+                                    </div>
+                                </a>
+                                <div class='caixa00 caixa00m'>
+                                    <form action="podcast/afegir" method="post" class="caixa00m3">
+                                        <input type="hidden" name="idCanal" th:attr="value=${c.id}" />
+                                        <button type="submit" class='caixa00button efecteButton'>
+                                            &#x271A; Afegir podcast
+                                        </button>
+                                    </form>
+                                    <form action="canal/formModCanal" method="post" class="caixa00m3">
+                                        <input type="hidden" name="formModCanal" th:attr="value=${c.id}" />
+                                        <button type="submit" class='caixa00button efecteButton'>
+                                            <i class="far fa-edit"></i> Modificar el canal
+                                        </button>
+                                    </form>
+                                    <form action="canal/eliminar" method="post" class="caixa00m3"
+                                        onsubmit="return confirm('Estàs segur que vols eliminar aquest canal?');">
+                                        <input type="hidden" name="eliminaIDcanal" th:attr="value=${c.id}" />
+                                        <input type="hidden" name="eliminaNomCanal" th:attr="value=${c.titol}" />
+                                        <button type="submit" class="caixa00button efecteButton">
+                                            &#10006; Eliminar el canal
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <hr/>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Nou CANAL -->
+                    <div th:if="${iTitol}">
+                        <h1>Has creat el nou canal</h1>
+                        <h2 th:text="${iTitol}"></h2>
+                        <p th:text="${iDesc}"></p>
+                        <p>
+                            <form action="../perfil" method="post">
+                                <button class="btn-registre efecteButton">< Torna al perfil</button>
+                            </form>
+                        </p>
+                    </div>
+
+                    <!-- Formulari modificar CANAL-->
+                    <div th:if="${formModCanal}">
+                        <h1>Modifica el Canal</h1>
+                        <h2 th:text="${formTitolCanal}"></h2>
+                        <div class="formulari-entrar">
+                            <form action="modCanal" method="post" enctype="multipart/form-data">
+                                <label for="modCanalTitol">Títol</label>
+                                <div class="input-group form-group">
+                                    <input type="text" class="form-control" id="modCanalTitol" name="modCanalTitol" th:attr="value=${formTitolCanal}" required/>
+                                </div>
+                                <label for="modCanalDesc">Descripció</label>
+                                <div class="input-group form-group">
+                                    <textarea class="form-control" id="modCanalDesc" name="modCanalDesc" th:text="${formDescCanal}" required></textarea>
+                                </div>
+                                <div class="form-group text-center">
+                                    <input type="hidden" name="modCanalID" th:attr="value=${formModCanal}" />
+                                    <button type="submit" class="btn-entrar efecteButton">MODIFICA</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Canal modificat -->
+                    <div th:if="${canalModificat}">
+                        <h1>Has modificat el canal:</h1>
+                        <h2 th:text="${canalModificat}"></h2>
+                        <p>
+                            <form action="../perfil" method="post">
+                                <button class="btn-registre efecteButton">< Torna al perfil</button>
+                            </form>
+                        </p>
+                    </div>
+
+                    <!-- Canal eliminat -->
+                    <div th:if="${eCanal}">
+                        <h1>Has eliminat el canal:</h1>
+                        <h2 th:text="${eCanal}"></h2>
+                        <p>
+                            <form action="../perfil" method="post">
+                                <button class="btn-registre efecteButton">< Torna al perfil</button>
+                            </form>
+                        </p>
+                    </div>
+
+                    <!-- Formulari nou PODCAST -->
+                    <div th:if="${idCanal}">
+                        <h1>Afegeix un nou PODCAST</h1>
+                        <h2>al Canal: <span th:text="${titolCanal}"></span></h2>
+                        <div class="formulari-entrar">
+                            <form action="nouPodcast" method="post" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <label for="titol">Títol</label>
+                                        <div class="input-group form-group">
+                                            <input type="text" class="form-control" placeholder="Títol" id="titol" name="titol" required/>
+                                        </div>
+                                        <label for="genere">Gènere</label>
+                                        <div class="input-group form-group">
+                                            <input type="text" class="form-control" placeholder="Gènere" id="genere" name="genere" required/>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6">
+                                        <label for="descripcio">Descripció</label>
+                                        <div class="input-group form-group">
+                                            <textarea class="form-control" placeholder="Descripció" id="descripcio" name="descripcio" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <label for="etiquetes">Etiquetes</label>
+                                <div class="input-group form-group">
+                                    <input type="text" class="form-control" placeholder="Etiquetes: separades per comes" id="etiquetes" name="etiquetes" required/>
+                                </div>
+                                <div class="input-group form-group col-xs-6">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-6">
+                                            <label for="imatge">Imatge</label>
+                                            <input type="file" class="form-control" id="imatge" name="imatge"/>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <label for="audio">Arxiu d'àudio</label>
+                                            <input type="file" class="form-control" id="audio" name="audio"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group text-center">
+                                    <input type="hidden" name="idCanal" th:attr="value=${idCanal}" />
+                                    <button type="submit" class="btn-entrar efecteButton">AFEGEIX</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+                    <!-- Nou Podcast -->
+                    <div th:if="${audio}">
+                        <h1>Has penjat un nou podcast</h1>
+                        <h2 th:text="${titol}"></h2>
+                        <p>
+                            <form action="../perfil" method="post">
+                                <button class="btn-registre efecteButton">< Torna al perfil</button>
+                            </form>
+                        </p>
+                    </div>
+
+
+                    
+                    <!-- Formulari modificar PODCAST-->
+                    <div th:if="${formModPodcastID}">
+                        <h1>Modifica el Podcast</h1>
+                        <h2 th:text="${formTitolPodcast}"></h2>
+                        <div class="formulari-entrar">
+                            <form action="modPodcast" method="post" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <label for="modPodcastTitol">Títol</label>
+                                        <div class="input-group form-group">
+                                            <input type="text" class="form-control" placeholder="Títol" id="modPodcastTitol" name="modPodcastTitol" th:attr="value=${formTitolPodcast}" required/>
+                                        </div>
+                                        <label for="modPodcastGenere">Gènere</label>
+                                        <div class="input-group form-group">
+                                            <input type="text" class="form-control" placeholder="Gènere" id="modPodcastGenere" name="modPodcastGenere" th:attr="value=${formGenerePodcast}" required/>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6">
+                                        <label for="modPodcastDesc">Descripció</label>
+                                        <div class="input-group form-group">
+                                            <textarea class="form-control" placeholder="Descripció" id="modPodcastDesc" name="modPodcastDesc" th:text="${formDescPodcast}" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <label for="modPodcastEtiquetes">Etiquetes</label>
+                                <div class="input-group form-group">
+                                    <input type="text" class="form-control" placeholder="Etiquetes: separades per comes" id="modPodcastEtiquetes" name="modPodcastEtiquetes" th:attr="value=${formEtiquetesPodcast}" required/>
+                                </div>
+                                <div class="form-group text-center">
+                                    <input type="hidden" name="modPodcastID" th:attr="value=${formModPodcastID}" />
+                                    <button type="submit" class="btn-entrar efecteButton">MODIFICA</button>
+                                </div>
+                            </form>
+
+                            <form action="eliminaPodcast" method="post"
+                                onsubmit="return confirm('Estàs segur que vols eliminar aquest podcast?');">
+                                <input type="hidden" name="eliminaIDpodcast" th:attr="value=${formModPodcastID}" />
+                                <input type="hidden" name="eliminaNomPodcast" th:attr="value=${formTitolPodcast}" />
+                                <button type="submit" class="btn-entrar efecteButton">
+                                    &#10006; Elimina el podcast
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Podcast modificat -->
+                    <div th:if="${podcastModificat}">
+                        <h1>Has modificat el podcast:</h1>
+                        <h2 th:text="${podcastModificat}"></h2>
+                        <p>
+                            <form th:attr="action=${podcastIDmod}">
+                                <button class="btn-registre efecteButton">< Torna al podcast</button>
+                            </form>
+                        </p>
+                        <p>
+                            <form action="../perfil" method="post">
+                                <button class="btn-registre efecteButton">Ves al perfil</button>
+                            </form>
+                        </p>
+                    </div>
+
+                    <!-- Podcast eliminat -->
+                    <div th:if="${ePodcast}">
+                        <h1>Has eliminat el podcast:</h1>
+                        <h2 th:text="${ePodcast}"></h2>
+                        <p>
+                            <form action="../perfil" method="post">
+                                <button class="btn-registre efecteButton">< Torna al perfil</button>
+                            </form>
+                        </p>
+                    </div>
+
+                    <!-- Usuari modificat -->
+                    <div th:if="${modUsername}">
+                        <h1>Has modificat les dades de perfil</h1>
+                        <p>
+                            <form action="../perfil" method="post">
+                                <button class="btn-registre efecteButton">< Torna al perfil</button>
+                            </form>
+                        </p>
+                    </div>
+
+                </article>
+            </section>
+        </main>
+        
+        <aside class='perfil' style="min-height:71vh;">
+            <h2>PERFIL D'USUARI</h2>
+            
+            <p>
+                <span th:text="${session.usuari.username}"></span>
+            </p>
+            <p>
+                <span th:text="${session.usuari.nom}"></span>
+                <span th:text="${session.usuari.cognom}"></span>
+            </p>
+            <p>
+                <span th:text="${session.usuari.email}"></span>
+            </p>
+            
+            <div class="perfilBtn">
+                <button type="submit" class="btn-entrar efecteButton"
+                    data-bs-toggle="modal" data-bs-target="#modalModUsuari">
+                    <i class='fas fa-user-edit'></i> <span class='ocultMobil'>MODIFICAR </span>DADES
+                </button>
+                
+                <!-- Crear NOU CANAL -->
+                <button type="submit" class="btn-entrar efecteButton"
+                    data-bs-toggle="modal" data-bs-target="#modalNouCanal">
+                    + <span class='ocultMobil'>CREAR NOU </span>CANAL
+                </button>
+            </div>
+        </aside>
+
+        <div th:replace="~{fragments :: footer}"></div>
+    </div>
+
+    <!-- Formulari MODIFICAR USUARI -->
+    <div class="modal fade" id="modalModUsuari" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-center">
+            <div class="modal-content">
+                <div class="title-formulari">
+                    <img src="images/logoPodCat00blanc.svg" width="35"/>
+                    <h1>PodCat</h1>
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" alt="Tancar finestra"></button>
+                    <div class="formulari-entrar">
+                        <h3 class="text-center text-white">Modifica les dades d'usuari</h3>
+                        <br>
+                        <form action="perfil/modificar" method="post">
+                            <label for="modUsername">Nom d'usuari</label>
+                            <div class="input-group form-group">
+                                <input th:value="${session.usuari.username}"
+                                    type="text" class="form-control" placeholder="Nom d'usuari" id="modUsername" name="username" required />
+                            </div>
+                            <label for="modNom">Nom</label> <label for="modCognom">i Congom</label>
+                            <div class="input-group form-group">
+                                <input th:value="${session.usuari.nom}"
+                                    type="text" class="form-control" placeholder="Nom" id="modNom" name="nom" required />
+                                <input th:value="${session.usuari.cognom}"
+                                    type="text" class="form-control" placeholder="Cognom" id="modCognom" name="cognom" required />
+                            </div>
+                            <label for="correu">Correu electrònic</label>
+                            <div class="input-group form-group">
+                                <input th:value="${session.usuari.email}"
+                                    type="text" class="form-control" placeholder="Correu electrònic" id="correu" name="email" required />
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn-entrar efecteButton">MODIFICA</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulari CREAR NOU CANAL -->
+    <div class="modal fade" id="modalNouCanal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-center">
+            <div class="modal-content">
+                <div class="title-formulari">
+                    <img src="images/logoPodCat00blanc.svg" width="35"/>
+                    <h1>PodCat</h1>
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" alt="Tancar finestra"></button>
+                    <div class="formulari-entrar">
+                        <h3 class="text-center text-white">Crea un nou CANAL</h3>
+                        <br>
+                        <form action="canal/afegir" method="post">
+                            <label for="nouCtitol">Títol del Canal</label>
+                            <div class="input-group form-group">
+                                <input type="text" class="form-control" placeholder="Títol" id="nouCtitol" name="titol" required/>
+                            </div>
+                            <label for="nouCdesc">Descripció</label>
+                            <div class="input-group form-group">
+                                <textarea class="form-control" placeholder="Descripció" id="nouCdesc" name="descripcio" required></textarea>
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn-entrar efecteButton">CREA</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:insert="~{fragments :: scripts}"></div>
+
+</body>
+</html>

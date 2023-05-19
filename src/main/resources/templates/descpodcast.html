@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="cat" xmlns:th="http://www.thymeleaf.org">
+<title>[[${podcast.canal.titol}]]</title>
+
+    <div th:replace="~{fragments :: head}"></div>
+
+<body>
+
+    <div th:insert="~{fragments :: nav}"></div>
+
+    <div class="parent">
+        <!-- Contingut del reproductor multimedia -->
+        <div class="div1">
+            <section>
+                <audio id="audio" style="display:none;" th:text="${podcast.audio}"></audio>
+                <div id="content" th:attr="style='background-image: linear-gradient(#11111100, #111111), url(\'/images/'+${podcast.imatge}+'\');'">
+                    <canvas id="canvas"></canvas>
+                    <div id="reproductor">
+                        <div id="play">
+                            <div id="contenidor-animacio"></div>
+                        </div>
+                        <div id="timeline"></div>
+                        <div id="time-counter">
+                            <span id="current-time">00:00:00</span>
+                            <span id="total-time">00:00:00</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contingut descripcio del Podcast -->
+        <div class="div2">
+            <section class="seccio-descripcio">
+                <article>
+                    <div th:if="${session.usuari != null}">
+                        <form th:if="${podcast.canal.usuari.id == session.usuari.id}" action="formModPodcast" method="post">
+                            <!-- Modificar Podcast si és de l'usuari logejat -->
+                            <input type="hidden" name="formModPodcastID" th:attr="value=${podcast.id}" />
+                            <button type="submit" class='btn-entrar efecteButton' style="float:right; margin-left: 20px;">
+                                <i class="far fa-edit"></i> Modifica <span class="ocultMobil">el PODCAST</span>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="seccio-contingut"></div>
+                    <div class="titol-descripcion">
+                        <h3 th:text="${podcast.titol}"></h3>
+                        <h4 th:text="*{#temporals.format(podcast.dataPublicacio, 'dd/MM/yyyy')}"></h4>
+                    </div>
+                    <div class="info-descripcion">
+                        <p th:text="${podcast.descripcio}"></p>
+                    </div>
+                    <ul class="tags-descripcion">
+                        <li th:text="${podcast.getGenere()}"></li>
+                        <li th:each="paraula : ${#strings.arraySplit(podcast.getEtiquetes() ,',')}" th:text="${paraula}"></li>
+                    </ul>
+                </article>
+            </section>
+        </div>
+
+        <!-- llista de podcast amb el canal predeterminat menú Aside -->
+        <div class="div3">
+            <aside style="background-color: #202020;">
+                <h3 class="titol-head-aside" th:text="'Podcast del canal '+ ${podcast.canal.titol}"></h3>
+                <div class="info" th:each="podcast, limit: ${listPodcast}" th:unless="${limit.index>=6}">
+                    <a th:href="@{/podcast/{id}(id=*{podcast.getId()})}"><img class="esquerra" th:src="@{'/images/'+${podcast.imatge}}"></a>
+                    <div class="info-dreta">
+                        <a th:href="@{/podcast/{id}(id=*{podcast.getId()})}" ><p style="font-weight:bold;" th:text="${podcast.titol}"></p></a>
+                        <p th:text="*{#temporals.format(podcast.dataPublicacio, 'dd/MM/yyyy')}"></p>
+                    </div>
+                    <div class="reset"></div>
+                </div>
+            </aside>
+        </div>
+
+         <div th:replace="~{fragments :: footer}"></div>
+
+    </div>
+
+         <div th:insert="~{fragments :: scripts}"></div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+#container{
+    margin: 20px 20px 0 20px;
+}
+
+.container-aside{
+    margin-left: 35px;
+}
+
+.titol-head-aside{
+    margin-bottom: 15px;
+}
+
+div.info{
+    color: #fff;
+    padding: 0 20px 15px 0;
+}
+
+div.info img.esquerra{
+    float: left;
+    margin-right: 15px;
+}
+
+.esquerra{
+    width: 200px;
+    height: 120px;
+    border-radius: 4px;
+    background-size: cover;
+    background-position: center;
+}
+
+.info-dreta{
+    float: left;
+    font-size: 16px;
+}
+
+.info-dreta a, p{
+    color: #c99500;
+}
+
+.info-dreta a:hover{
+    color: #c99500;
+}
+
+div.reset{
+    clear: both;
+}
+
+/* CSS seccio descripcio del PodCast */
+.titol-descripcio{
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+.titol-descripcio h4{
+    font-size:16px;
+    font-weight: normal;
+}
+
+section.seccio-descripcio article{
+    text-align:justify ;
+}
+
+.tags{
+    position: relative;
+    left: -15px;
+}
+
+.tags li{
+    display: inline-block;
+    padding: 6px;
+    border-radius: 6px;
+    background-color: #333;
+    margin: 2px;
+}
+
+/* Responsive Mobile */
+@media all and (max-width: 768px){
+    #content{
+        margin: 20px;
+    }
+
+    .container-aside{
+        margin-left: 5px;
+    }
+
+    .titol-descripcio{
+        margin-top:10px;
+    }
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+
+<div th:replace="~{fragments :: head}"></div>
+
+<body>
+    <div th:insert="~{fragments :: nav}"></div>
+
+    <!-- Formulari Contacte amb Nosaltres -->
+    <section id="contacte-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1>Contacte amb nosaltres</h1>
+                    <h3>Envia'ns un missatge i ens posarem en contacte amb tu.</h3>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <form action="#" method="post">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="name" placeholder="Nom" >
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="correu" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="assumpte" placeholder="Assumpte">
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" id="message" placeholder="Escriu el teu missatge"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 text-center bt-form">
+                                <button id="botoenviar" class="btn-entrar-form efecteButton">Enviar</button>
+                                <div id="success" style="display:none">Missatge rebut correctament!</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div th:insert="~{fragments :: scripts}"></div>
+
+    <script src="/js/form_contacte.js" ></script>
+
+    <div th:replace="~{fragments :: footer}"></div>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ca">
+<div th:replace="~{fragments :: head}"></div>
+
+<body>
+    <div th:insert="~{fragments :: nav}"></div>
+
+    <!-- Contingut Main -->
+    <div class="contingut">
+        <main>
+           <section>
+                <article>
+                    <h1>Error!</h1>
+                    <p>Hi ha hagut un error carregant la pàgina</p>
+                    <h2 th:text="${error}"></h2>
+                </article>
+            </section>
+        </main>
+
+        <div th:replace="~{fragments :: aside}"></div>
+
+        <div th:replace="~{fragments :: footer}"></div>
+
+    </div>
+    
+    <div th:insert="~{fragments :: scripts}"></div>
+    
+</body>
+</html>

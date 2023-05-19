@@ -1,0 +1,263 @@
+<!DOCTYPE HTML>
+<!-- RECURSOS https://frontbackend.com/thymeleaf/how-to-work-with-fragments-in-thymeleaf -->
+<!-- https://attacomsian.com/blog/thymeleaf-fragments -->
+<html lang="ca" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta name="author" content="Pied Piper" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="language" content="ca" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <title>PodCat</title>
+    <meta name="description" content="La teva comunitat de PodCast" />
+    
+    <!-- CDN Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- Estils CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/estils.css" />
+    <link rel="stylesheet" type="text/css" href="/css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="/css/reproductor.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/descpodcast.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/podcast.css">
+    <!-- Importem les fonts de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gajraj+One&family=Poppins:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+
+<div th:fragment="nav">
+    <!-- Menu Navegacio -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand efecteLogo" href="/">
+                <img src='/images/logoPodCat00blanc.svg' width="35" alt="PodCat"/>
+                <div class="titol-logo">PodCat</div>
+            </a>
+            <!-- Icones en versió mòbil 
+            <div class="d-none d-sm-block d-md-none">
+                <ul class="d-flex navbar-nav ms-auto">
+                    <li>
+                        <a href= "#" class="nav-link text-white px-3">
+                            mmm
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler" aria-controls="navbar-toggler" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar-toggler">
+                <ul class="navbar-nav ms-auto d-flex justify-content-center align-items-center efecteMenu">
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-3" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-3" href="/contacte">Contacte</a>
+                    </li>
+                    <li class="nav-item"  th:if="${session.usuari == null}">
+                        <!-- Boto Modal -->
+                        <button type="button" style="padding:10px;" class="modal-buttonnav" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Accés Usuari
+                        </button>
+                    </li>
+                    <!-- Amagar a la versió mòbil class="nav-item d-none d-lg-block d-xl-block" -->
+                    <li class="nav-item" th:if="${session.usuari != null}">
+                        <a href= "/perfil" class="nav-link text-white px-3">
+                            <i class="fas fa-user" style="color: #e1e1e1;"></i>
+                            <span th:text="${session.usuari.username}"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item" th:if="${session.usuari != null}">
+                        <a th:if="${session.usuari.rol == 'admin'}"
+                            class="nav-link text-white px-3" href="/admin">admin</a>
+                    </li>
+                    <li class="nav-item" th:if="${session.usuari != null}">
+                        <a href= "/logout" class="nav-link text-white px-3">
+                            <i class="fas fa-power-off" style="color: #e1e1e1;"></i>
+                            logout
+                        </a>
+                    </li>
+                    <!-- Exemple de menú dropdown
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Dropdown</a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Link 1</a></li>
+                          <li><a class="dropdown-item" href="#">Link 2</a></li>
+                          <li><a class="dropdown-item" href="#">Link 3</a></li>
+                        </ul>
+                      </li>
+                    -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Formulari Registre Usuaris Modal -->
+    <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-center">
+            <div class="modal-content modal-content-gran">
+                <div class="title-formulari">
+                    <img src="/images/logoPodCat00blanc.svg" width="35"/>
+                    <h1>PodCat</h1>
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" alt="Tancar finestra"></button>
+                    <div class="formulari-registre">
+                        <h3 class="text-center text-white">Registre Usuaris</h3>
+                        <br>
+                        <form action="/registre" method="post">
+                            <table class="taulaInvisible">
+                                <tr>
+                                    <td>
+                                        <label for="username">Nom d'usuari</label>
+                                    </td>
+                                    <td>
+                                        <input class="controls form-control" type="text" id="username" name="username" placeholder="Nom d'usuari" required/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="nom">Nom</label>
+                                    </td>
+                                    <td>
+                                        <input class="controls form-control" type="text" id="nom" name="nom" placeholder="Nom" required/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="cognom">Cognom</label>
+                                    </td>
+                                    <td>
+                                        <input class="controls form-control" type="text" id="cognom" name="cognom" placeholder="Cognom" required/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="email">Correu electrònic</label>
+                                    </td>
+                                    <td>
+                                        <input class="controls form-control" type="email" id="email" name="email" placeholder="Correu electrònic" required/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="password">Contrasenya</label>
+                                    </td>
+                                    <td>
+                                        <input class="controls form-control" type="password" id="password" name="password" placeholder="Contrasenya" required/>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <div class="bt">
+                                <button type="submit" class="btn-registre efecteButton">Registra't</button>
+                            </div>
+                        </form>
+                        <div class="condicions">
+                            <p>* En registrar-te, acceptes les nostres condicions d'ús, la nostra política de privadesa i cookies. No us preocupeu, no compartirem la vostra informació amb tercers.</p>
+                        </div>                
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulari Accés Usuaris Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-center">
+            <div class="modal-content">
+                <div class="title-formulari">
+                    <img src="/images/logoPodCat00blanc.svg" width="35"/>
+                    <h1>PodCat</h1>
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" alt="Tancar finestra"></button>
+                    <div class="formulari-entrar">
+                        <h3 class="text-center text-white">Accés Usuaris</h3>
+                        <br>
+                        <form action="/login" method="post">
+                            <label for="username">Nom d'usuari</label>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="username" class="form-control" placeholder="Usuari" id="username" name="username" required/>
+                            </div>
+                            <label for="password">Contrasenya</label>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <input type="password" class="form-control" placeholder="Contrasenya" id="password" name="password" required/>
+                            </div>
+                            <br>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn-entrar efecteButton">Entra</button>
+                            </div>
+                            <div class="login-entrar">
+                                <button type="button" class="modal-buttonnav modal-registre" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                                    Registra't a la nostra web
+                                </button>
+                            </div>
+                        </form>
+                            <div class="condicions">
+                                <p>* En accedir amb les teves dades acceptes les nostres Condicions legals, Condicions de venda, Política de privadesa i Política de cookies.</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<aside th:fragment="aside">
+    
+</aside>
+
+<div th:fragment="filtre">
+    <form class="form-inline" action="filtre" method="post">
+        <div class="form-group mx-sm-2">
+            <input type="text" name="keyword" id="keyword" class="controls" placeholder="Cerca un podcast">
+        </div>
+        <button type="submit" class="bt-filtre efecteButton">Cerca</button>
+    </form>
+</div>
+
+
+
+<footer th:fragment="footer">
+    <p>
+        Grup 1: PIED PIPER
+        <br>
+        <img src='/images/logoPiedPiper00segon.svg' width='80' height='80'>
+    </p>
+    <p>
+        IOC 2022 S2
+        <br>
+        DAW Desenvolupament d'Aplicacions Web
+        <br>
+        M12B0 Projecte de desenvolupament d'aplicacions web
+        <br>
+        Projecte: PodCat
+    </p>
+</footer>
+
+<div th:fragment="scripts">
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    <!-- scripts reproductor multimedia -->
+    <script type="text/javascript" src="/js/reproductor.js"></script>
+    <script type="text/javascript" src="/js/lottie.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+</div>
+
+</body>
+</html>

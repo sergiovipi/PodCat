@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="cat" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" href="/css/filtre.css">
+<div th:replace="~{fragments :: head}"></div>
+
+<body>
+
+<div th:insert="~{fragments :: nav}"></div>
+
+<!-- Filtre per Canals Podcasts -->
+<div class="container">
+    <section id="form-filtre">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1>Filtre per podcasts</h1>
+                <br>
+                <div class="form-group" >
+                    <form th:action="@{/filtre}">
+                        <input type="text" name="keyword" id="keyword" th:value="${keyword}" placeholder="Escriu el podcast a buscar" />
+                        <button type="submit" class="bt-filtre efecteButton">Filtra</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resultats del filtre: caixes -->
+    <section>
+        <div class='caixa00podcasts'>
+            <a class='caixa00 caixa00p'
+                th:each="p: ${listPodcast}"
+                th:attr="style='background-image: linear-gradient(#11111100, #111111), url(\'images/'+${p.imatge}+'\');',
+                    href='podcast/'+${p.id}+''">
+                <div>
+                    <!-- <div class='caixa00text' th:text="${p.dataPublicacio}"></div> -->
+                    <div class='caixa00text' th:text="${p.canal.titol}"></div>
+                    <div class='caixa00text' th:text="${p.descripcio}"></div>
+                    <div class='caixa00titol' th:text="${p.titol}"></div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Resultats del filtre: taula
+    <section>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Podcast</th>
+                <th>Descripcio</th>
+                <th>Gènere</th>
+                <th>Imatge</th>
+                <th>Canal</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="podcast: ${listPodcast}">
+                <td th:text="${podcast.titol}"></td>
+                <td th:text="${podcast.descripcio}"></td>
+                <td th:text="${podcast.genere}"></td>
+                <td th:text="${podcast.imatge}"></td>
+                <td th:text="${podcast.canal.titol}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+     -->
+</div>
+
+<!-- Filtre per Podcasts
+<div class="container">
+    <section id="form-filtre">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1>Filtre per podcasts</h1>
+                <div class="select-container">
+                    <form action="/filtre" th:action="@{/filtre}" method="post">
+                    <select name="Canals">
+                        <option disabled="" selected>-- Selecciona Canals --</option>
+                        <option th:each="canals : ${listaCanal}"
+                                th:value="${canals.getId()}"
+                                th:text="${canals.getTitol()}"
+                        />
+                    </select>
+                    <select name="Genere">
+                        <option disabled="" selected>-- Selecciona Gènere --</option>
+                        <option th:each="podcast : ${listaPodcast}"
+                                th:value="${podcast.getId()}"
+                                th:text="${podcast.getGenere()}"
+                        />
+                    </select>
+                    <select name="data">
+                        <option disabled="" selected>-- Selecciona Data --</option>
+                        <option th:each="podcast : ${listaPodcast}"
+                                th:value="${podcast.getId()}"
+                                th:text="${podcast.getDataPublicacio()}"
+                        />
+                    </select>
+                    <button type="submit" class="bt-filtre">Filtra</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  -->
+
+<div th:replace="~{fragments :: footer}"></div>
+
+<div th:insert="~{fragments :: scripts}"></div>
+
+</body>
+</html>

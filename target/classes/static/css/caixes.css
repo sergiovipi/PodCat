@@ -1,0 +1,244 @@
+/* PODCASTS CAIXES */
+.caixa00podcasts {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-bottom: var(--marge-mig);
+}
+
+/* CAIXA PODCAST */
+.caixa00 {
+	display: flex;
+	align-items: flex-end;
+	margin-bottom: auto;
+	aspect-ratio: 5 / 2;
+	max-height: 100px;
+	flex: 1 0 20%;
+	margin: var(--marge-mig);
+	padding: var(--marge-mig);
+	font-size: 12px;
+	color: var(--color-text);
+	text-shadow: 0 2px 6px var(--color-fons);
+	background-color: var(--color-gris-clar);
+	border: 5px solid var(--color-fons);
+	outline: 1px solid var(--color-primer);
+	border-radius: 4px;
+	cursor: pointer;
+		background-size: cover;
+		background-position: center;
+		transition: var(--transicio);
+}
+.caixa00titol{
+	font-size: 18px;
+	font-weight: 600;
+	transition: var(--transicio);
+}
+.caixa00m{
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	color: var(--color-gris-clar);
+}
+.caixa00mes{
+	font-size: 90px;
+	font-weight: 700;
+	text-align: center;
+	padding: var(--marge);
+	transition: var(--transicio);
+}
+	.caixa00:hover{
+        transform: scale(1.05);
+        filter: brightness(1.25);
+	}
+	.caixa00:hover .caixa00titol,
+	.caixa00:hover .caixa00mes{
+		color: var(--color-primer);
+	}
+	.caixa00:active > div{
+		color: var(--color-fons);
+	}
+
+.caixa3_2{
+	aspect-ratio: 3 / 2;
+	max-height: 120px;
+}
+
+
+
+/* PRIMRES PROVES / caixes01.html */
+/* CAIXA 1 */
+.caixa01 {
+		display: flex;
+		align-items: flex-end;
+		margin-bottom: auto;
+	flex: 1 0 20%;
+	min-height: 80px;
+	margin: var(--marge-mig);
+	padding: var(--marge-mig);
+	text-shadow: 0 2px 6px var(--color-fons);
+	background-color: var(--color-gris-clar);
+	border-radius: 4px;
+	cursor: pointer;
+	background: url('../images/podcast.jpg');
+	background-size: cover;
+	background-position: center;
+	transition: var(--transicio);
+}
+.caixa01titol{
+	font-size: 16px;
+	font-weight: 600;
+}
+.caixa01canal{
+	font-size: 12px;
+}
+.caixa01mesPodcast{
+	background: var(--color-gris-clar);
+}
+.caixa01mes{
+	font-size: 90px;
+	font-weight: 500;
+}
+	.caixa01:hover{
+		opacity: 0.8;
+	}
+	.caixa01:active{
+		color: var(--color-fons);
+	}
+
+
+/* CAIXA 2 */
+.caixa02 {
+		display: flex;
+		align-items: flex-end;
+		margin-bottom: auto;
+	flex: 1 0 20%;
+	min-height: 80px;
+	margin: var(--marge-mig);
+	padding: var(--marge-mig);
+	text-shadow: 0 2px 6px var(--color-fons);
+	background-color: var(--color-gris-clar);
+		border: 5px solid var(--color-fons);
+		outline: 1px solid var(--color-primer);
+		border-radius: 4px;
+	cursor: pointer;
+	background: url('../images/podcast.jpg');
+	background-size: cover;
+	background-position: center;
+	transition: var(--transicio);
+}
+.caixa02titol{
+	font-size: 16px;
+	font-weight:600;
+	transition: var(--transicio);
+}
+.caixa02canal{
+	font-size: 12px;
+	transition: var(--transicio);
+}
+.caixa02mesPodcast{
+	background: var(--color-gris-clar);
+}
+.caixa02mes{
+	font-size: 90px;
+	font-weight: 500;
+}
+	.caixa02:hover{
+		transform: scale(1.1) skew(-4deg);
+	}
+	.caixa02:hover .caixa02titol{
+		color: var(--color-primer);
+	}
+	.caixa02:active > div{
+		color: var(--color-fons);
+	}
+
+
+
+/* CAIXA 3 */
+.caixa03 {
+	flex: 1 0 20%;
+	min-height: 80px;
+	margin: var(--marge-mig);
+	padding: var(--marge-mig);
+	text-shadow: 0 2px 6px var(--color-fons);
+	background-color: var(--color-gris-mig);
+		border-radius: 4px;
+		box-shadow: 0px 8px var(--color-gris-fosc);
+	cursor: pointer;
+	transition: var(--transicio);
+
+}
+.caixa03titol{
+	font-size: 16px;
+	font-weight:600;
+	transition: var(--transicio);
+}
+.caixa03canal{
+	font-size: 12px;
+	transition: var(--transicio);
+}
+	.caixa03:hover {
+		box-shadow: 0px 5px var(--color-gris-fosc);
+		transform: translateY(3px);
+	}
+	.caixa03:active {
+		background-color: var(--color-gris-clar);
+		box-shadow: 0px 3px var(--color-gris-fosc);
+		transform: translateY(5px);
+	}
+
+
+
+
+/* CAIXA 4 */
+.caixa04 {
+    display: flex;
+    flex: 1 0 20%;
+    min-height: 80px;
+    margin: var(--marge-mig);
+    padding: 0;
+    text-shadow: 0 2px 6px var(--color-fons);
+        border: 5px solid var(--color-fons);
+        outline: 1px solid var(--color-primer);
+        border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transicio);
+}
+.caixa04imatge{
+    width: 80px;
+    aspect-ratio: 1 / 1;
+	background: url('../images/podcast.jpg');
+	background-size: cover;
+	background-position: center;
+}
+.caixa04titol{
+    padding: var(--marge-mig);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 18px;
+    transition: var(--transicio);
+}
+.caixa04canal{
+    font-size: 12px;
+    font-weight: 200;
+    line-height: 12px;
+    transition: var(--transicio);
+}
+.caixa04mes{
+    float: left;
+    font-size: 90px;
+    font-weight: 500;
+    padding-top: var(--marge-mig);
+}
+    .caixa04:hover{
+        transform: scale(1.1);
+        filter: brightness(1.45);
+        /* filter: contrast(175%) brightness(3%); */
+    }
+    .caixa04:hover .caixa04titol{
+        color: var(--color-primer);
+    }
+    .caixa04:active > div{
+        color: var(--color-fons);
+    }

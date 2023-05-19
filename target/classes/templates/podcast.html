@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="cat" xmlns:th="http://www.thymeleaf.org">
+
+    <div th:replace="~{fragments :: head}"></div>
+
+<body>
+
+    <div th:insert="~{fragments :: nav}"></div>
+
+<div class="contingut">
+        <!-- Contingut del reproductor multimedia -->
+        <section>
+            <audio id="audio" style="display:none;" th:text="keneda.mp3"></audio>
+            <div id="content">
+                <div id="reproductor">
+                    <div id="play">
+                        <div id="contenidor-animacio"></div>
+                    </div>
+                    <div id="timeline"></div>
+                    <div id="time-counter">
+                        <span id="current-time">00:00:00</span>
+                        <span id="total-time">00:00:00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contingut descripcio del Podcast -->
+        <div class="container">
+            <section class="seccio-descripcio">
+                <div class="titol-descripcio">
+                    <h3>El Podcast definitiu sobre la vida, l'univers i tot plegat</h3>
+                    <h4>10-10-2023</h4>
+                </div>
+                <article>
+                    Akira és una pel·lícula d'anime ciberpunk post-apocalíptica dirigida per Katsuhiro Ōtom estrenada el
+                    16 de juliol de 1988 a Japó. És una adaptació del màniga homònim creat pel mateix Otomo i coescrita
+                    amb ajuda d'Izo Hashimoto. Els personatges i l'ambientació de la pel·lícula van ser adaptats des del
+                    mànga original, mentre que la trama és una reestructuració d'esdeveniments que difereix de la
+                    versió impresa pel fet que aquest encara estava en procés de publicació.
+                    <br><br>
+                    Malgrat només rebre un guardó, al Festival de Cinema Fantàstic d'Amsterdam, des del seu llançament
+                    Akira ha rebut un llarg reconeixement com a pel·lícula de culte i és considerada una de les millors
+                    pel·lícules d'animació i ciència ficció de tots els temps. La realització de la cinta és tota
+                    una fita en la història del cinema sent considerada la producció animada més costosa de la història
+                    de aquell moment.
+                </article>
+                <ul class="tags">
+                    <li>Anime</li>
+                    <li>Akira</li>
+                    <li>CiberPunk</li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- llista de canals menú Aside -->
+        <aside style="background-color: #202020;">
+            <div>
+                <h3 class="titol-head-aside">Canals de PodCat</h3>
+                <div class="info" th:each="podcast, limit: ${listaPodcast}" th:unless="${limit.index>=6}">
+                    <a th:href="@{/podcast/{id}(id=*{podcast.getId()})}"><img class="esquerra"  th:src="@{'/images/'+${podcast.imatge}}"></a>
+                    <div class="info-dreta">
+                        <a th:href="@{/podcast/{id}(id=*{podcast.getId()})}" ><p style="font-weight:bold;" th:text="${podcast.canal.titol}"></p></a>
+                        <p th:text="*{#temporals.format(podcast.dataPublicacio, 'dd/MM/yyyy')}"></p>
+                    </div>
+                    <div class="reset"></div>
+                </div>
+            </div>
+        </aside>
+
+        <div th:replace="~{fragments :: footer}"></div>
+
+</div>
+
+        <div th:insert="~{fragments :: scripts}"></div>
+
+</body>
+</html>
+
+

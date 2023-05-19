@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ca">
+<div th:replace="~{fragmentsAdmin :: head}"></div>
+	
+<body>
+	
+	<div th:replace="~{fragments :: nav}"></div>
+
+
+    <!-- Contingut Main -->
+    <main>
+		
+		<div th:replace="~{fragmentsAdmin :: nav}"></div>
+		
+		<section>
+
+			<article>
+				<h1 id='titol'>ADMIN</h1>
+				<p id='paragraf'>Zona d'administració</p>
+
+				<table id='taula' class='taula'>
+					<!--
+					<tr>
+						<th></th>
+						<th>Usuari</th>
+						<th>Rol</th>
+						<th>Nom</th>
+						<th>Cognom</th>
+						<th>Email</th>
+						<th></th>
+						<th></th>
+					</tr>
+					<tr>
+						<td>1.</td>
+						<td>flurris</td>
+						<td>admin</td>
+						<td>Flurris</td>
+						<td>Morris</td>
+						<td>flurris@morris.com</td>
+						<td><a href=''>edit</a></td>
+						<td><a href=''>delete</a></td>
+					</tr>
+					-->
+				</table>
+			</article>
+
+			<div class="modalFons ocult"></div>
+
+			<div class="modalModUsuari ocult">
+				<div class="modForm">
+					<h3 class="text-center text-white">Modificar Usuari</h3>
+					<table class="taulaInvisible">
+						<tr>
+							<td>
+								<label for="modUsername">Nom d'usuari</label>
+							</td>
+							<td>
+								<input id="modUsername" type="text" name="username" placeholder="Nom d'usuari" required/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="modNom">Nom</label>
+							</td>
+							<td>
+								<input id="modNom"  type="text" name="nom" placeholder="Nom" required/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="modCognom">Cognom</label>
+							</td>
+							<td>
+								<input id="modCognom" type="text" name="cognom" placeholder="Cognom" required/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="modEmail">Correu electrònic</label>
+							</td>
+							<td>
+								<input id="modEmail" type="email" name="email" placeholder="Correu electrònic" required/>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<input id="modId" type="hidden" name="id" />
+								<button type="submit" id="modificarUs" class="button button1 efecteButton">MODIFICA</button>
+								<button type="submit" class="cancellar button button2 efecteButton">CANCEL·LA</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+			<div class="modalModCanal ocult">
+				<div class="modForm">
+					<h3 class="text-center text-white">Modificar Canal</h3>
+					<table class="taulaInvisible">
+						<tr>
+							<td>
+								<label for="modCaTitol">Títol</label>
+							</td>
+							<td>
+								<input id="modCaTitol" type="text" name="titol" placeholder="Títol" required/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="modCaDesc">Descripció</label>
+							</td>
+							<td>
+								<input id="modCaDesc" type="text" name="descripcio" placeholder="Descripció" required/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="modCaImatge">Imatge</label>
+							</td>
+							<td>
+								<input id="modCaImatge" type="text" name="imatge" placeholder="Imatge" required/>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<input id="modCaId" type="hidden" name="id" />
+								<button type="submit" id="modificarCa" class="button button1 efecteButton">MODIFICA</button>
+								<button type="submit" class="cancellar button button2 efecteButton">CANCEL·LA</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+
+			<div class="modalModPodcast ocult">
+				<div class="modForm">
+					<h3 class="text-center text-white">Modificar Podcast</h3>
+					<table class="taulaInvisible">
+						<tr>
+							<td>
+								<label for="modPoTitol">Títol</label>
+							</td>
+							<td>
+								<input id="modPoTitol" type="text" name="titol" placeholder="Títol" required/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="modPoDesc">Descripció</label>
+							</td>
+							<td>
+								<input id="modPoDesc" type="text" name="descripcio" placeholder="Descripció" required/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="modPoAudio">Àudio</label>
+							</td>
+							<td>
+								<input id="modPoAudio" type="text" name="audio" placeholder="Àudio" required/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="modPoGenere">Gènere</label>
+							</td>
+							<td>
+								<input id="modPoGenere" type="text" name="genere" placeholder="Gènere" required/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="modPoTags">Etiquetes</label>
+							</td>
+							<td>
+								<input id="modPoTags" type="text" name="tags" placeholder="Etiquetes" required/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="modPoImatge">Imatge</label>
+							</td>
+							<td>
+								<input id="modPoImatge" type="text" name="imatge" placeholder="Imatge" required/>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<input id="modPoId" type="hidden" name="id" />
+								<button type="submit" id="modificarPo" class="button button1 efecteButton">MODIFICA</button>
+								<button type="submit" class="cancellar button button2 efecteButton">CANCEL·LA</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+		</section>
+    </main>
+
+	<div th:insert="~{fragmentsAdmin :: scripts}"></div>
+
+</body>
+</html>

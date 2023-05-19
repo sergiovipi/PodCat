@@ -1,0 +1,317 @@
+/*
+// IOC 2022 S2
+// DAW Desenvolupament d'Aplicacions Web
+// M12B0 Projecte de desenvolupament d'aplicacions web
+// Grup 1 Pied Piper: PodCat
+// Guia d'estils
+*/
+
+/* Variables */
+:root {
+	/* Colors */
+	--color-text: #e1e1e1;
+	--color-gris-clar: #888888;
+	--color-gris-mig: #666666;
+	--color-gris-fosc: #333333;
+	--color-fons: #202020;
+	--color-primer: #c99500;
+	--color-segon: #c7bb7b;
+	/* Marges */
+	--marge-mig: 10px;
+	--marge: 20px;
+	--marge-doble: 40px;
+	/* Transició */
+	--transicio: 0.4s;
+}
+
+/* Estils generals */
+body {
+	font-family: 'Poppins', sans-serif;
+	font-weight: 300;
+	margin: 0px;
+	padding: 0px;
+	font-size: 14px;
+	line-height: 22px;
+	color: var(--color-text);
+	background-color: var(--color-fons);
+	transition: var(--transicio);
+}
+a:link { color:var(--color-primer); text-decoration:none; }
+a:visited { color:var(--color-primer); text-decoration:none; }
+a:active { color:var(--color-segon); text-decoration:none; }
+a:hover { color:var(--color-segon); text-decoration:none; transition: var(--transicio); }
+
+header {
+	position: sticky;
+	top: 0;
+	margin: 0;
+	height: 70px;
+	background: var(--color-primer);
+}
+header > div {
+	display: flex;
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 0;
+}
+.titol {
+	font-size: 40px;
+	font-weight: 700;
+	margin: 0 0 0 var(--marge);
+	padding: var(--marge) 0 0 0;
+	color: var(--color-fons);
+}
+.subtitol {
+	font-size: 30px;
+	font-weight: 700;
+	margin: 0 0 0 var(--marge);
+	color: var(--color-segon);
+	margin-right: var(--marge);
+}
+#logo{
+	width: 100px;
+	height: 100px;
+	margin: -40px var(--marge-mig) 0 var(--marge);
+}
+
+main {
+	width: 100%;
+	margin: 0 auto;
+	padding: 0;
+}
+
+article {
+	margin: 0px;
+	padding-top: var(--marge);
+}
+
+.col01{
+	padding: var(--marge);
+	/* flex: 1; */
+	flex: 36%;
+	order: 1;
+}
+.col02{
+	padding: var(--marge);
+	flex: 64%;
+	order: 1;
+}
+
+.col03{
+	padding: var(--marge);
+	flex: 100%;
+	order: 1;
+}
+.col03 > p > svg{
+	margin: 0 var(--marge-mig) var(--marge-mig) 0;
+}
+
+footer {
+	line-height: 20px;
+	color: var(--color-segon);
+	background: var(--color-gris-mig);
+}
+footer a:link { color:var(--color-text); text-decoration:none; }
+footer a:visited { color:var(--color-text); text-decoration:none; }
+footer a:active { color:var(--color-primer); text-decoration:none; }
+footer a:hover { color:var(--color-primer); text-decoration:none; }
+
+footer > div > p {
+	margin: 0px;
+	padding: var(--marge-doble) var(--marge);
+}
+
+.textAux{
+	font-family: 'Gajraj One';
+	color: var(--color-primer);
+	font-size: 30px;
+	line-height: 30px;
+}
+
+.amplada {
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 0;
+	display: flex;
+	flex-flow: row;
+}
+
+h1, h2, h3, h4, h5, h6{
+	font-weight: 900;
+	letter-spacing: 1px;
+}
+
+h1{
+	font-size: 30px;
+}
+
+h2{
+	font-size: 26px;
+}
+
+h3{
+	font-size: 20px;
+}
+
+h4{
+	font-size: 18px;
+}
+
+p{
+	margin-bottom: var(--marge-doble);
+}
+
+
+	/* TIPOGRAFIA · GRUIXOS */
+	.font20{
+		font-size: 20px;
+	}
+	.font_Thin{
+		font-weight: 100;
+	}
+	.font_Light{
+		font-weight: 300;
+	}
+	.font_Regular{
+		font-weight: 400;
+	}
+	.font_Bold{
+		font-weight: 700;
+	}
+	.font_Black{
+		font-weight: 900;
+	}
+	
+	/* COLORS */
+	#color{
+		display: inline-block;
+		margin-bottom: var(--marge);
+	}
+	.color{
+		position: float;
+		float: left;
+		width: 74px;
+		height: 60px;
+		margin-right: var(--marge-mig);
+		border-radius: 2px;
+		clear:both;
+	}
+	.color1{
+		background-color: var(--color-text);
+	}
+	.color2{
+		background-color: var(--color-gris-clar);
+	}
+	.color3{
+		background-color: var(--color-gris-mig);
+	}
+	.color4{
+		background-color: var(--color-gris-fosc);
+	}
+	.color5{
+		background-color: var(--color-primer);
+	}
+	.color6{
+		background-color: var(--color-segon);
+	}
+	.color7{
+		background-color: var(--color-fons);
+		outline: 1px solid var(--color-gris-mig);
+		outline-offset: -1px;
+	}
+	
+	/* BUTTONS */
+	.button{
+		padding: 8px 22px;
+		min-width: 180px;
+		letter-spacing: 3px;
+		border: 0;
+		border-radius: 2px;
+		cursor: pointer;
+		transition: var(--transicio);
+	}
+		.button:active{
+			opacity: 0.7;
+		}
+	.button1{
+		color: var(--color-text);
+		background-color: var(--color-primer);
+	}
+		.button1:hover{
+			color: var(--color-text);
+			background-color: var(--color-gris-clar);
+		}
+
+	.button2{
+		color: var(--color-text);
+		background-color: var(--color-gris-mig);
+	}
+		.button2:hover{
+			color: var(--color-text);
+			background-color: var(--color-gris-clar);
+		}
+	
+	
+	/* FORMULARIS */
+	form{
+		border: 0;
+		padding: 0;
+		margin: 0;
+	}
+	
+	input[type = text],
+	input[type = password],
+	select,
+	input[type = email]{
+		font-family: 'Poppins', sans-serif;
+		margin: 8px 8px 8px 0;
+		padding: 8px 10px;
+		color: var(--color-fons);
+		background-color: var(--color-text);
+		letter-spacing: 1px;
+		border: 0;
+		border-radius: 4px;
+		outline: 1px solid var(--color-segon);
+		outline-offset: -1px;
+		cursor: pointer;
+	}
+	input[type = text]::placeholder,
+	input[type = password]::placeholder,
+	input[type = email]::placeholder{
+		color: var(--color-gris-clar);
+	}
+	option:disabled{
+		color: var(--color-gris-clar);
+	}
+	
+	input[type = text]:focus,
+	input[type = password]:focus,
+	select:focus,
+	input[type = email]:focus {
+		outline: 3px solid var(--color-primer);
+		outline-offset: -3px;
+	}
+	
+	input[type = radio],
+	input[type = checkbox]{
+		margin: var(--marge-mig) 0;
+	}
+	
+	
+	input[type = submit]{
+		padding: 8px 22px;
+		color: var(--color-text);
+		background-color: var(--color-primer);
+		letter-spacing: 2px;
+		border: 0;
+		border-radius: 4px;
+		cursor: pointer;
+	}
+		input[type = submit]:hover{
+			background-color: var(--color-gris-clar);
+			transition: var(--transicio);
+		}
+		input[type = submit]:active{
+			color: var(--color-gris-clar);
+			background-color: var(--color-gris-fosc);
+		}

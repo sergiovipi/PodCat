@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ca">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta charset="UTF-8">
+		<meta name="author" content="Pied Piper" />
+		
+		<title>Guia d'estils</title>
+		<meta name='title' content="Guia d'estils" />
+		<meta name='description' content="Guia d'estils del projecte PodCat" />
+		
+		<meta name="language" content="ca" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="css/guia.css" />
+		
+		<!-- Importem les fonts de Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Gajraj+One&family=Poppins:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+		
+	</head>
+	
+	<body>
+		<header>
+			<div>
+				<img id='logo' src='images/logoPodCat00blanc.svg'/>
+				<div>
+					<div class='titol'>PODCAT</div>
+					<div class='subtitol'>GUIA D'ESTILS</div>
+				</div>
+			</div>
+		</header>
+		
+		<main>
+			<!-- <nav></nav> -->
+			
+			<article class='amplada'>
+				<div class="col01">
+					<h1>TIPOGRAFIA</h3>
+					<h3>Font: Poppins</h3>
+					<p>
+						font-size: 12px;
+						&nbsp;
+						line-height: 22px;
+					</p>
+					<p>
+						<span class='font20 font_Thin'>Thin</span>
+						<span class='font20 font_Light'>Light</span>
+						<span class='font20 font_Regular'>Regular</span>
+						<span class='font20 font_Bold'>Bold</span>
+						<span class='font20 font_Black'>Black</span>
+					</p>
+					<p>
+						<h1 style='margin: 20px 0 4px 0;'>Header one</h1>
+						font-size: 30px;
+						
+						<h2 style='margin: 20px 0 4px 0;'>Header two</h2>
+						font-size: 26px;
+						
+						<h3 style='margin: 20px 0 4px 0;'>Header three</h3>
+						font-size: 20px;
+						
+						<h4 style='margin: 20px 0 4px 0;'>Header four</h4>
+						font-size: 18px;
+					</p>
+					
+					<p>
+						<h2 style='margin: 20px 0 4px 0;'>PARÀGRAF</h2>
+						PodCat és una webapp per gestionar arxius d’àudio oberts, la qual permet penjar i programar continguts, des de notes de veu de format breu, fins a arxius més llargs tipus podcasts.
+						<br>
+						Els usuaris podran penjar els seus arxius acompanyats d’un títol, descripció, imatge de portada i data de publicació (en cas que es vulgui programar per un dia i hora concrets)...
+					</p>
+				</div>
+				
+				
+				
+				<div class="col02">
+					<h4>Tipografia de support: Gajraj One</h4>
+					<p>
+						<span class='textAux'>Res millor que un podcast!</span>
+					</p>
+				
+				
+					<h1>COLORS</h1>
+					<p id='color'>
+						<div id='color'>
+							<div class='color color1'></div>
+							<br><strong>#e1e1e1</strong>
+							<br>
+							Textos
+						</div>
+						<div id='color'>
+							<div class='color color2'></div>
+							<br>
+							<strong>#888888</strong>
+							<br>
+							Gris clar
+						</div>
+						<div id='color'>
+							<div class='color color3'></div>
+							<br><strong>#666666</strong>
+							<br>
+							Gris mig
+						</div>
+						<div id='color'>
+							<div class='color color4'></div>
+							<br><strong>#333333</strong>
+							<br>
+							Gris fosc
+						</div>
+						<div id='color'>
+							<div class='color color7'></div>
+							<br>
+							<strong>#202020</strong>
+							<br>
+							Fons
+						</div>
+						<br>
+						<div id='color'>
+							<div class='color color5'></div>
+							<br>
+							<strong>#c99500</strong>
+							<br>
+							Enllaços
+						</div>
+						<div id='color'>
+							<div class='color color6'></div>
+							<br>
+							<strong>#c7bb7b</strong>
+							<br>
+							Enllaços
+						</div>
+						<br>
+						Text regular | <a href=''>Text amb enllaç</a>
+					</p>
+					
+					
+					<h3>BUTTONS i FORMULARIS</h3>
+					<p>
+						<button class='button button1'>BUTTON 1</button>
+						<button class='button button2'>BUTTON 2</button>
+						<br>
+						
+						<form>
+							<input type="text" placeholder="Input text" />
+							<input type="email" placeholder="Input email" />
+							<br>
+							<input type="password" placeholder="Contrasenya" />
+							&nbsp;
+							<input type="checkbox" id="cb1" name="cb" value="1">
+							<label for="cb1"> Checkbox 1</label>
+							<br>
+							
+							<select name="select" id="s">
+								<option disabled selected>Selecciona una opció</option>
+								<option value="1">Selecció primera</option>
+								<option value="2">Selecció segona</option>
+								<option value="3">Selecció tercera</option>
+								<option value="4">Última selecció</option>
+							</select>
+							&nbsp;
+							<input type="radio" id="r1" name="r" value="1" checked>
+							<label for="r1"> Radio 1</label>
+							&nbsp;
+							<input type="radio" id="r2" name="r" value="2">
+							<label for="r2"> Radio 2</label>
+							&nbsp;
+							<input type="radio" id="r3" name="r" value="3">
+							<label for="r3"> Radio 3</label>
+							<br>
+							
+							
+							<br>
+							<input type="submit" type="button1" value="SUBMIT">
+						</form>
+					</p>
+				</div>
+			</article>
+			
+			<!--
+			<article class='amplada'>
+				<div class='col03'>
+					<h3>ICONOGRAFIA</h3>
+					<p>
+						// En desenvolupament
+					</p>
+				</div>
+			</article>
+			-->
+			
+		</main>
+		
+		<footer>
+			<div class='amplada'>
+				<p>
+					Grup 1: PIED PIPER
+					<br>
+					<img src='images/logoPiedPiper00.svg' width='80' height='80'>
+				</p>
+				<p>
+					IOC 2022 S2
+					<br>
+					DAW Desenvolupament d'Aplicacions Web
+					<br>
+					M12B0 Projecte de desenvolupament d'aplicacions web
+					<br>
+					Projecte: PodCat · <a href=''>Guia d'estils</a>
+				</p>
+			</div>
+		</footer>
+		
+	</body>
+</html>

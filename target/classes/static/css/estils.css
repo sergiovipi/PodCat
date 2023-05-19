@@ -1,0 +1,530 @@
+/*
+// IOC 2022/*
+// IOC 2022 S2
+// DAW Desenvolupament d'Aplicacions Web
+// M12B0 Projecte de desenvolupament d'aplicacions web
+// Pied Piper
+*/
+
+/* Variables */
+:root {
+    /* Colors */
+    --color-text: #e1e1e1;
+    --color-gris-clar: #888888;
+    --color-gris-mig: #666666;
+    --color-gris-fosc: #333333;
+    --color-fons: #202020;
+    --color-primer: #c99500;
+    --color-segon: #c7bb7b;
+    --color-logo:#e1e1e1;
+    /* Marges */
+    --marge-quart: 5px;
+    --marge-mig: 10px;
+    --marge: 20px;
+    --marge-doble: 40px;
+    /* Transició */
+    --transicio: 0.4s;
+}
+
+
+body{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+    color: var(--color-text);
+    background-color: var(--color-fons);
+    display:flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+/*
+a{ color: var(--color-primer); text-decoration:none; transition:0.4s; }
+a:link { color: var(--color-primer); text-decoration:none; transition:0.4s; }
+a:visited { color: var(--color-primer); text-decoration:none; transition:0.4s; }
+a:active { color: var(--color-text); text-decoration:none; transition:0.4s; }
+a:hover { color: var(--color-text); text-decoration:none; transition:0.4s; }
+*/
+
+nav{
+    background-color: var(--color-primer);
+}
+
+.navbar-toggler{
+    color:var(--color-text);
+    font-size:28px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.titol-logo{
+    float:right;
+    font-size: 35px;
+    font-weight: 900;
+    color: var(--color-text);
+    margin: -7px 5px;
+}
+
+.contingut {
+    display: grid;
+    gap: 0px;
+    margin-top: 65px;
+    /* grid-template-rows: 1fr 1fr auto; */
+    grid-template-areas:"main   aside"
+                        "main   aside"
+                        "footer footer";
+}
+
+main {
+    grid-area: main;
+}
+
+article {
+    margin: 0 auto;
+    padding: 20px;
+    color: var(--color-text);
+    text-align: center;
+}
+
+.portada {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    padding: var(--marge-doble);
+    background: url('../images/foto_intro.jpg') no-repeat center;
+    background-size: cover;
+}
+.portadaAside {
+    height: 40vh;
+    margin: -20px;
+}
+
+.requadre{
+    margin: 0 0 var(--marge) 0;
+    padding: var(--marge);
+    font-size: 16px;
+    color: var(--color-fons);
+    background-color: var(--color-segon);
+    box-shadow: 0px -4px 30px #000000;
+    border-radius: var(--marge-quart);
+}
+.requadre p{
+    color: var(--color-fons);
+}
+.requadre2{
+    font-size: 16px;
+}
+.requadre2 p{
+    color: var(--color-text);
+}
+
+.strong{
+    font-weight: 600;
+}
+
+.textTitols{
+    font-family: 'Gajraj One';
+    color: var(--color-text);
+    font-size: 34px;
+    line-height: 38px;
+    text-shadow: 0px 2px 5px var(--color-fons);
+}
+
+aside {
+    grid-area: aside;
+    padding: var(--marge);
+    background-color: var(--color-gris-fosc);
+}
+
+/* PERFIL */
+.perfil p{
+    color:var(--color-text);
+}
+
+.perfilBtn button{
+    width: 100%;
+    margin-bottom: var(--marge-mig);
+}
+/* fi PERFIL */
+
+footer {
+    display: flex;
+    grid-area: footer;
+    min-height: 250px;
+    font-size: 12px;
+    background: var(--color-gris-mig);
+    color: var(--color-primer);
+    line-height: 20px;
+    margin-top:auto;
+}
+
+footer > p{
+    margin: 0px;
+    padding: 40px;
+}
+
+.ocult{
+    display: none;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+h1{
+    font-size: 30px;
+}
+
+h2{
+    font-size: 26px;
+}
+
+h3{
+    font-size: 20px;
+}
+
+h4{
+    font-size: 18px;
+}
+
+hr {
+    border-top: 1px solid var(--color-primer);
+}
+
+
+/* EFECTES */
+    /* Efecte logo */
+    .efecteLogo img,
+    .efecteLogo div {
+        transition: var(--transicio);
+    }
+    .efecteLogo:hover div {
+        transform: scale(1.10);
+    }
+    .efecteLogo:hover img,
+    .efecteLogo:hover div {
+        filter: brightness(0.8) blur(0.5px) sepia(100%) hue-rotate(20deg);
+    }
+
+    /* Efecte menú */
+    .efecteMenu li a,
+    .efecteMenu li button {
+        border-radius: var(--marge-mig);
+        transition: var(--transicio);
+    }
+    .efecteMenu li a:hover,
+    .efecteMenu li button:hover {
+        color: var(--color-fons) !important;
+        background-color: var(--color-segon);
+    }
+
+    /* Efecte buttons */
+    .efecteButton{
+        transition: var(--transicio);
+    }
+    .efecteButton:hover{
+        background-color: var(--color-gris-clar);
+        animation: efecteAnimacio 1s linear;
+    }
+        @keyframes efecteAnimacio {
+            0%   { background: var(--color-gris-fosc); }
+            5%  { background: var(--color-gris-clar); }
+            20% { background: var(--color-segon); }
+            100% { background: var(--color-gris-clar); }
+        }
+        .efecteButton:active{
+            background-color: var(--color-gris-fosc);
+        }
+/* Fi Efectes */
+
+/* Estils formulari contacte */
+#contacte-form{
+    padding: 140px;
+}
+
+#contacte-form h1{
+    text-transform: uppercase;
+    color:#ffffff;
+    margin-bottom: 20px;
+}
+
+#contacte-form h3{
+    color:#c99500;
+    margin-bottom: 30px;
+}
+
+.bt-form{
+    margin-top:20px;
+}
+
+.error{
+    background-color: #bc1010;
+    padding: 6px 12px;
+    border-radius: 4px;
+    color: white;
+    font-size:16px;
+    font-weight: bold;
+    margin-left: 16px;
+    margin-top: 6px;
+    position: absolute;
+}
+
+#success {
+    background: #4caf50;
+    color: #fff;
+    width: 100%;
+    height: 65px;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+li.nav-item{
+    display: contents;
+}
+
+/* imatges icones login i logout*/
+svg{
+    fill:#ffffff;
+}
+
+/* Estils CSS pàgina filter */
+.select-container {
+    text-align: center;
+}
+
+select{
+    font-family: 'Poppins', sans-serif;
+    margin: 8px 8px 8px 0;
+    padding: 8px 10px;
+    color: var(--color-fons);
+    background-color: var(--color-text);
+    letter-spacing: 1px;
+    border: 0;
+    border-radius: 4px;
+    outline: 1px solid var(--color-segon);
+    outline-offset: -1px;
+    cursor: pointer;
+}
+
+.bt-filtre {
+    padding: 8px 22px;
+    color: var(--color-text);
+    background-color: var(--color-primer);
+    letter-spacing: 2px;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#form-filtre{
+    padding:140px 0 40px;
+}
+
+/* PODCASTS CAIXES */
+.caixa00podcasts {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--marge);
+    margin-bottom: var(--marge-mig);
+}
+    .caixa00podcasts a{
+        color: var(--color-text);
+        text-decoration: none;
+    }
+    .caixa00podcasts a:hover{
+        color: var(--color-text);
+        text-decoration: none;
+    }
+
+.caixa00 {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: auto;
+    aspect-ratio: 3 / 2;
+    min-height: 120px;
+    max-width: 400px;
+    flex: 1 0 30%;
+    border-radius: 4px;
+}
+.caixa00p {
+    cursor: pointer;
+        text-shadow: 0 2px 6px var(--color-fons);
+        border: 5px solid var(--color-fons);
+        outline: 1px solid var(--color-primer);
+    padding: var(--marge-mig);
+    font-size: 12px;
+    color: var(--color-text);
+    text-align: left;
+    background-color: var(--color-gris-clar);
+    background-size: cover;
+    background-position: center;
+    transition: var(--transicio);
+}
+
+.caixa00portada {
+    flex: 1 0 40%;
+}
+.caixa00m{
+    display: flex;
+    flex-direction: column;
+        flex-wrap: wrap;
+        gap: 10px 5px;
+    max-height: 190px;
+}
+.caixa00m2{
+    width: 100%;
+    height: calc(50% - 5px);
+}
+.caixa00m3{
+    width: 100%;
+    max-height: auto;
+    height: calc(33% - 10px);
+}
+.caixa00button{
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    color: var(--color-fons);
+    border: 0;
+    border-radius: 4px;
+    background-color: var(--color-primer);
+}
+.caixa00titol{
+    font-size: 18px;
+    font-weight: 600;
+    transition: var(--transicio);
+}
+    .caixa00p:hover{
+        transform: scale(1.05);
+        filter: brightness(1.25);
+    }
+    .caixa00p:active{
+        filter: brightness(2);
+    }
+/* fi PODCASTS CAIXES */
+
+/* Taula sense bordes*/
+.taulaInv{
+    border: 0;
+}
+.taulaInvisible{
+    border: 0;
+}
+.taulaInvisible td{
+    margin: 0 var(--marge-mig);
+    padding: 0 var(--marge-mig);
+}
+
+
+/* Responsive Mobile */
+@media all and (max-width: 991px){
+    .contingut{
+        grid-template-areas: "main"
+                             "main"
+                             "aside"
+                             "footer";
+    }
+
+    .contingut_perfil{
+        margin-top: 170px;
+    }
+
+    .portada{
+        height: 34vh;
+    }
+
+    .portadaAside {
+        height: 24vh;
+    }
+
+    .textTitols{
+        font-size: 24px;
+    }
+
+    .main-2 h3{
+        font-size: 21px;
+    }
+
+    #contacte-form{
+        margin: 100px 0 50px;
+        padding: 0px;
+    }
+
+    #contacte-form h1{
+        font-size: 21px;
+    }
+
+    #contacte-form h3{
+        font-size: 16px;
+    }
+
+    /* PERFIL */
+	.perfil {
+		z-index: 1010;
+		position: fixed;
+		display: inline;
+		top: 65px;
+		left: 0;
+		width: 100%;
+        height: 100px;
+		padding: var(--marge);
+		transition: var(--transicio);
+        box-shadow: 0px 0px 25px #000000;
+        line-height: 10px;
+        min-height: 0!important;
+    }
+
+    .perfil p{
+        display: inline;
+        padding-right: var(--marge-mig);
+        color: var(--color-text);
+    }
+
+    .perfilBtn{
+        position: relative;
+        float: right;
+        top: -48px;
+        width: 180px;
+    }
+
+    .perfilBtn button{
+        height: 34px;
+    }
+
+    .ocultMobil{
+        display: none;
+    }
+}
+
+@media all and (max-width: 660px){
+
+    .contingut_perfil{
+        margin-top: 220px;
+    }
+
+    /* PERFIL */
+	.perfil {
+        height: 150px;
+    }
+    .perfil div {
+        
+    }
+    .perfilBtn{
+        top: 24px;
+        width: 100%;
+    }
+    .perfilBtn button{
+        min-width: auto;
+        width: calc(50% - var(--marge-quart));
+
+    }
+
+}

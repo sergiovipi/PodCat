@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ca">
+<div th:replace="~{fragments :: head}"></div>
+
+<body>
+<div th:insert="~{fragments :: nav}"></div>
+
+<!-- Contingut Main -->
+<div class="contingut">
+    <main>
+        <section>
+            <article>
+                <h3>T'has registrat correctament!</h3>
+                <p>Ja pots entrar amb el teu usuari i contrasenya</p>
+
+                <div class="formulari-entrar" style="width:400px;">
+                    <h4 class="text-center text-white">Accés Usuaris</h4>
+                    <br>
+                    <form action="/login" method="post">
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="username" class="form-control" placeholder="Usuari" name="username" required/>
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" class="form-control" placeholder="Contrasenya" name="password" required/>
+                        </div>
+                        <br>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn-entrar efecteButton">Entra</button>
+                        </div>
+                    </form>
+                    <div class="condicions">
+                        <p>* En accedir amb les teves dades acceptes les nostres Condicions legals, Condicions de venda, Política de privadesa i Política de cookies.</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <div th:replace="~{fragments :: aside}"></div>
+
+    <div th:replace="~{fragments :: footer}"></div>
+
+</div>
+
+<div th:insert="~{fragments :: scripts}"></div>
+
+</body>
+</html>

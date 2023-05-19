@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-PodCatApplication<PodCat>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "cat.xtec.ioc.podcat.PodCatApplication",
+            "projectName": "PodCat",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
